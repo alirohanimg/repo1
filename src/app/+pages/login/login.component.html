@@ -1,0 +1,60 @@
+<form [formGroup]="loginform" class="example-form">
+
+  <mat-form-field class="example-full-width">
+
+    <mat-label>پیش شماره کشور</mat-label>
+    <input type="text" matInput readonly="true" formControlName="moblieCountry"  [errorStateMatcher]="matcher"
+    placeholder="98+ مثال">
+
+
+   <!-- <mat-hint>پیش شماره کشور را وارد کنید</mat-hint>
+
+    <mat-error *ngIf="mobileCountryFormControl.hasError('required')">
+       <strong> پیش شماره کشور حتما باید وارد شود </strong>
+    </mat-error>
+    -->
+  </mat-form-field>
+
+
+  <mat-form-field class="example-full-width">
+
+    <mat-label>تلفن همراه</mat-label>
+    <input type="text" matInput formControlName="mobile" [errorStateMatcher]="matcher"
+           placeholder="مثال :091XXXXXXX">
+    <mat-hint *ngIf="loginform.controls.mobile.hasError( 'required')">شماره تلفن همراه خود را وارد کنید</mat-hint>
+
+    <mat-error *ngIf="loginform.controls.mobile.hasError('required')">
+       <strong>شماره تلفن همراه حتما باید وارد شود</strong>
+    </mat-error>
+
+
+
+
+
+  <mat-error *ngIf="loginform.controls.mobile.hasError('touched') && loginform.controls.mobile.hasError('pattern')">
+    <strong>فرمت تلفن همراه درست نیست</strong>
+ </mat-error>
+
+
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>رمز عبور</mat-label>
+    <input type="text" matInput formControlName="password" [errorStateMatcher]="matcher"
+         minlength="6"  >
+    <mat-hint *ngIf="loginform.controls.password.hasError('required')">کلمه عبور خود را وارد کنید</mat-hint>
+
+    <mat-error *ngIf="loginform.controls.password.hasError('required')">
+       <strong>کلمه عبور باید وارد شود</strong>
+    </mat-error>
+
+
+
+   <mat-error *ngIf="loginform.controls.password.hasError('touched') && loginform.controls.password.hasError('pattern')">
+    <strong>فرمت پسورد درست نیست</strong>
+ </mat-error>
+  </mat-form-field>
+  <button (click)="check()" mat-raised-button color="primary">ورود</button>
+  <button mat-raised-button onclick="register()">ثبت نام</button>
+
+</form>

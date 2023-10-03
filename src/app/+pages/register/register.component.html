@@ -1,0 +1,146 @@
+
+<form [formGroup]="registerform" class="example-form" >
+
+        <mat-radio-group class="mat-mdc-radio-button" formControlName="type" label="نوع کابر را وارد کنید">
+          <mat-radio-button class="radio1" id="1"  name="type" value="1">آرایشگر</mat-radio-button>
+          <mat-radio-button  class="radio1" id="2" name="type" value="2">مشتری</mat-radio-button>
+          <mat-hint *ngIf="registerform.controls.type.hasError( 'required')">نوع کابر را وارد کنید</mat-hint>
+          <mat-error *ngIf="registerform.controls.type.hasError('required') && registerform.controls.type.touched">
+            <strong>نوع کابر باید وارد شود</strong>
+        </mat-error>
+        </mat-radio-group>
+
+        <mat-tab-group>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+              First
+            </ng-template>
+
+        <mat-form-field class="example-full-width">
+
+          <mat-label>تلفن همراه</mat-label>
+          <input type="text" matInput formControlName="mobile" [errorStateMatcher]="matcher"
+                placeholder="مثال :091XXXXXXX" >
+          <mat-hint *ngIf="registerform.controls.mobile.hasError( 'required')">شماره تلفن همراه خود را وارد کنید</mat-hint>
+
+          <mat-error *ngIf="registerform.controls.mobile.hasError( 'required')">
+            <strong>شماره همراه باید وارد شود</strong>
+        </mat-error>
+
+        <mat-error *ngIf="registerform.controls.mobile.hasError('pattern')">
+          <strong>فرمت شماره همراه درست نیست</strong>
+      </mat-error>
+
+
+       </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>رمز عبور</mat-label>
+          <input type="text" matInput formControlName="password" [errorStateMatcher]="matcher">
+          <mat-hint *ngIf="registerform.controls.password.hasError('required')">کلمه عبور خود را وارد کنید</mat-hint>
+
+          <mat-error *ngIf="registerform.controls.password.hasError('required')">
+             <strong>کلمه عبور باید وارد شود</strong>
+          </mat-error>
+
+         <mat-error *ngIf="registerform.controls.password.hasError('pattern')">
+          <strong>کلمه عبور حداقل باید دارای یک حرف کوچک و یک حرف بزرگ باشد و حداقل 8 حرف باشد</strong>
+         </mat-error>
+        </mat-form-field>
+
+
+
+      <mat-form-field class="example-full-width">
+        <mat-label > تکرار رمز عبور </mat-label>
+        <input type="text" matInput formControlName="confirmPassword" [errorStateMatcher]="matcher">
+        <mat-hint *ngIf="registerform.controls.confirmPassword.hasError('required')">کلمه عبور خود را تکرار کنید</mat-hint>
+
+        <mat-error *ngIf="registerform.controls.confirmPassword.hasError('required')">
+           <strong> تکرار کلمه عبور باید وارد شود </strong>
+        </mat-error>
+
+       <mat-error *ngIf="registerform.controls.password.value!= registerform.controls.confirmPassword.value">
+        <strong>کلمه عبور و تکرار کلمه عبور یکی نیست</strong>
+       </mat-error>
+      </mat-form-field>
+
+    </mat-tab>
+
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+          Second
+        </ng-template>
+
+        <mat-form-field class="example-full-width">
+
+          <mat-label>عنوان</mat-label>
+            <input type="text" matInput formControlName="title" [errorStateMatcher]="matcher">
+            <mat-hint *ngIf="registerform.controls.title.hasError( 'required')">عنوان خود را وارد کنید</mat-hint>
+            <mat-error *ngIf="registerform.controls.title.hasError('required')">
+              <strong>عنوان کابر باید وارد شود</strong>
+            </mat-error>
+
+            <mat-error *ngIf="!registerform.controls.title.hasError('minlenght')">
+              <strong>عنوان حداقل باید چهار حرف باشد</strong>
+            </mat-error>
+
+
+          </mat-form-field>
+
+
+
+
+          <mat-form-field class="example-full-width">
+            <mat-label>تاریخ تولد</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field  class="example-full-width">
+
+            <mat-label>شهر</mat-label>
+              <input type="text" matInput formControlName="city" [errorStateMatcher]="matcher">
+              <mat-hint *ngIf="registerform.controls.city.hasError('required')">شهر خود را وارد کنید</mat-hint>
+
+              <mat-error *ngIf="registerform.controls.city.dirty && !registerform.controls.city.hasError('minlenght')">
+                <strong>شهر حداقل باید چهار حرف باشد</strong>
+              </mat-error>
+
+
+            </mat-form-field>
+
+            </mat-tab>
+
+          </mat-tab-group>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div>
+        <button mat-raised-button [disabled]="!registerform.valid" color="primary">ذخیره</button>
+        <button mat-raised-button >انصراف</button>
+      </div>
+      </form>
+
+
+
+
+
+
+
