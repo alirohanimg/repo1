@@ -3,7 +3,7 @@
   <mat-form-field class="example-full-width">
 
     <mat-label>پیش شماره کشور</mat-label>
-    <input type="text" matInput readonly="true" formControlName="moblieCountry"  [errorStateMatcher]="matcher"
+    <input type="text" matInput readonly="true" formControlName="mobileCountry"  [errorStateMatcher]="matcher"
     placeholder="98+ مثال">
 
 
@@ -26,15 +26,6 @@
     <mat-error *ngIf="loginform.controls.mobile.hasError('required')">
        <strong>شماره تلفن همراه حتما باید وارد شود</strong>
     </mat-error>
-
-
-
-
-
-  <mat-error *ngIf="loginform.controls.mobile.hasError('touched') && loginform.controls.mobile.hasError('pattern')">
-    <strong>فرمت تلفن همراه درست نیست</strong>
- </mat-error>
-
 
   </mat-form-field>
 

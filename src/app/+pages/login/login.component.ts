@@ -26,17 +26,24 @@ export class LoginComponent {
   matcher = new MyErrorStateMatcher();
 
 
- constructor(private fb: FormBuilder,public http:HttpClient) {};
+ constructor(private fb: FormBuilder,public http:HttpClient,public router:Router) {};
   loginform=this.fb.group({
     mobileCountry:['',Validators.required],
     mobile:['',[Validators.required,Validators.pattern('^09[0-9]{9}$')]],
    password:['',[Validators.required,Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Za-z0-9].{7,}$')]]
-  })
+  });
 
   check(){
-    this.http.post('https://localhost:7050/adminlogin',{username:'admin',password:'admin'}).subscribe(result =>
-       console.log(result);
-    );
+    this.http.post('https://localhost:7050/adminlogin'
+    ,{username:this.loginform.controls.mobile.value,Password:this.loginform.controls.password.value}).subscribe(result =>
+     {
+
+     if((result as any).isOK==true){
+     this.router.navigateByUrl('/dashboard');
+     }
+    }
+
+    )
   }
 
 }

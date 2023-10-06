@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent} from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,10 +16,21 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTabsModule} from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './+pages/dashboard/dashboard.component';
+import { RouterLink, RouterOutlet } from '@angular/router';
+
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    NgModule,
+    LoginComponent,
+    RegisterComponent,
+    DashboardComponent
+
 
 
   ],
@@ -31,12 +44,17 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    LoginComponent,
-    MatRadioModule,
     RegisterComponent,
     MatTabsModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    LoginComponent,
+    DashboardComponent,
+    RouterOutlet,
+    RouterLink
+
+
+
 
 
   ],
